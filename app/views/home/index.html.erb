@@ -1,41 +1,22 @@
 <div class="container home-sections d-flex flex-row justify-content-center
   align-items-center"
 >
-  <div class="images-section pt-3 d-none d-lg-block"></div>
+  
+  <% if current_user %>
+    <div class="card text-center pt-5 mx-auto" style="width:23rem">
+      <h1>ログインできた！</h1>
+      <p>full_name: <%= current_user.full_name %></p>
 
-  <div class="login-section pt-3">
-    <div class="card text-center pt-5" style="width: 23rem;">
-    <h1 class="card-img-top">ログイン</h1>
-      <div class="card-body">
-        <div class="mb-3 mt-4">
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            placeholder="電話番号, ユーザ名, Eメール"
-          >
-        </div>
+      <p>username: <%= current_user.username %></p>
 
-        <div class="mb-3">
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            placeholder="パスワード"
-          >
-        </div>
-
-        <a href="#" class="btn btn-primary d-block"> ログイン</a>
-
-        <a href="#" class="fs-6 d-block my-4 text-decoration-none"> パスワードを忘れた？</a>
-      </div>
+      <p>e-mail: <%= current_user.email %></p>
+      
+      <%= button_to "サインアウト", destroy_user_session_path, class: "fs-6 my-4 text-decoration-none text-info", method: :delete %>
     </div>
 
-    <div class="card text-center py-2 mt-3" style="width: 23rem;">
-      <div class="card-text">
-        アカウントを持っていない？
-        <a href="#" class="fs-6 my-4 text-decoration-none"> サインアップ</a>
-      </div>
-    </div>
-  </div>
+    
+  <% elsif %>
+    <h1>ログインしていない</h1>
+    <%= button_to "サインイン", new_user_session_path, class: "fs-6 my-4 text-decoration-none text-info" %>
+  <% end %>
 </div>
