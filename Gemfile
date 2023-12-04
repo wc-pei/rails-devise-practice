@@ -20,6 +20,9 @@ gem "importmap-rails"
 gem "sassc-rails"
 gem "bootstrap", '~> 5.3.2'
 
+# install devise
+gem "devise"
+
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
